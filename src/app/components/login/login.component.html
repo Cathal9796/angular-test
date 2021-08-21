@@ -1,0 +1,47 @@
+<div class="login">
+  <form
+    class="login_form"
+    (ngSubmit)="login()"
+    (focus)="onFocus()"
+    onblur="inputFocus = false"
+  >
+    <div
+      class="login_form_not-found"
+      *ngIf="!email.errors?.email && (userLoadingState$ | async) === 3"
+    >
+      User email address not found
+    </div>
+    <mat-form-field appearance="fill">
+      <!-- [floatLabel]="floatLabelControl.value" -->
+      <mat-label>Please enter your email address</mat-label>
+      <input
+        class="login_form_input"
+        matInput
+        placeholder="Email"
+        name="loginInput"
+        [(ngModel)]="loginInput"
+        required
+        minlength="1"
+        [formControl]="email"
+      />
+    </mat-form-field>
+    <mat-label *ngIf="email.errors?.email && email.touched"
+      >Please enter a valid email address</mat-label
+    >
+
+    <ng-container *ngIf="(userLoadingState$ | async) === 1; else elseTemplate">
+      <mat-spinner class="login_form_button" [diameter]="36"></mat-spinner>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button
+        class="login_form_button"
+        mat-raised-button
+        color="primary"
+        (click)="login()"
+        [disabled]="email.errors"
+      >
+        Login
+      </button>
+    </ng-template>
+  </form>
+</div>

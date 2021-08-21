@@ -1,0 +1,23 @@
+<div class="user-posts">
+  <mat-spinner
+    *ngIf="(postsLoadingState$ | async) === 1"
+    class="user-posts_spinner"
+  ></mat-spinner>
+
+  <div class="user-posts_create" fxLayout="column" fxLayoutAlign="start start">
+    <button
+      class="create-post_button_post"
+      mat-raised-button
+      color="primary"
+      (click)="createPost()"
+    >
+      Create Post
+    </button>
+  </div>
+
+  <app-post-card
+    [posts]="posts$ | async"
+    [otherPost]="false"
+    [failure]="(postsLoadingState$ | async) === 3"
+  ></app-post-card>
+</div>

@@ -1,0 +1,56 @@
+<div class="create-post">
+  <h2>What's on your mind?</h2>
+  <mat-dialog-content>
+    <mat-form-field
+      appearance="fill"
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="10px"
+    >
+      <mat-label>Title</mat-label>
+      <input
+        class="create-post_input_title"
+        matInput
+        placeholder="Title"
+        [(ngModel)]="postTitle"
+        required
+        minlength="1"
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      appearance="fill"
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="10px"
+    >
+      <mat-label>Content</mat-label>
+      <textarea
+        class="create-post_input_content"
+        matInput
+        placeholder="Content"
+        [(ngModel)]="postBody"
+        required
+        minlength="1"
+      ></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button
+      class="create-post_button_cancel"
+      mat-raised-button
+      (click)="closeDialog(false)"
+    >
+      Cancel
+    </button>
+    <button
+      class="create-post_button_post"
+      mat-raised-button
+      color="primary"
+      (click)="closeDialog(true)"
+      [disabled]="postBody.length<1 || postTitle.length<1"
+    >
+      Post
+    </button>
+  </mat-dialog-actions>
+</div>

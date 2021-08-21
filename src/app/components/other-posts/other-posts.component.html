@@ -1,0 +1,13 @@
+<div class="other-posts">
+  <h2 color="primary">Other Posts</h2>
+  <ng-container *ngIf="(loadingState$ | async) === 1; else elseTemplate">
+    <mat-spinner class="user-posts_spinner"></mat-spinner>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <app-post-card
+      [posts]="otherPosts$ | async"
+      [otherPost]="true"
+      [failure]="(loadingState$ | async) === 3"
+    ></app-post-card>
+  </ng-template>
+</div>

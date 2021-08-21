@@ -1,0 +1,29 @@
+.login {
+  width: 100%;
+  height: 50%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
+  &_form {
+    padding: 0 25%;
+    width: 50%;
+
+    &_not-found{
+      margin-bottom: 8px;
+    }
+
+    &_input, mat-form-field{
+      width: 100%;
+    }
+
+    &_button{
+      float: right;
+    }
+  }
+}
